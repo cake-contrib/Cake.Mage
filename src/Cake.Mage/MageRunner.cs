@@ -24,7 +24,6 @@ namespace Cake.Mage
         /// Gets the name of the tool.
         /// </summary>
         /// <returns>The name of the tool.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         protected override string GetToolName()
         {
             return "Mage.exe (Manifest Generation and Editing Tool)";
@@ -34,7 +33,6 @@ namespace Cake.Mage
         /// Gets the possible names of the tool executable.
         /// </summary>
         /// <returns>The tool executable name.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         protected override IEnumerable<string> GetToolExecutableNames()
         {
             return new [] { Executable };
@@ -71,9 +69,15 @@ namespace Cake.Mage
             if (newOrUpdateApplicationSettings != null)
             {
                 if (newOrUpdateApplicationSettings is NewApplicationSettings)
+                {
                     builder = builder.Append("-new Application");
+                }
                 else
-                    builder = builder.Append("-update");
+                {
+                    var updatePath = ((UpdateApplicationSettings) newOrUpdateApplicationSettings).FileToUpdate.MakeAbsolute(Environment).FullPath;
+                    builder = builder.AppendSwitchQuoted("-update", updatePath);
+                    
+                }
 
                 builder = builder.AppendNonNullDirectoryPathSwitch("-fd", newOrUpdateApplicationSettings.FromDirectory, Environment)
                         .AppendNonNullFilePathSwitch("-if", newOrUpdateApplicationSettings.IconFile, Environment)
@@ -84,9 +88,15 @@ namespace Cake.Mage
             {
                 var newOrUpdateDeploymentSettings = (BaseNewAndUpdateDeploymentSettings) settings;
                 if (newOrUpdateDeploymentSettings is NewDeploymentSettings)
+                {
                     builder = builder.Append("-new Deployment");
+                }
                 else
-                    builder = builder.Append("-update");
+                {
+                    var updatePath = ((UpdateDeploymentSettings) newOrUpdateDeploymentSettings).FileToUpdate.MakeAbsolute(Environment).FullPath;
+                    builder = builder.AppendSwitchQuoted("-update", updatePath);
+                }
+
                 builder = builder
                     .AppendNonEmptySwitch("-appc", newOrUpdateDeploymentSettings.AppCodeBase)
                     .AppendNonNullFilePathSwitch("-appm", newOrUpdateDeploymentSettings.AppManifest, Environment)
@@ -103,8 +113,8 @@ namespace Cake.Mage
                 .AppendNonEmptySecretSwitch("-pwd", settings.Password)
                 .AppendIfNotDefaultSwitch("-p", settings.Processor, Processor.Msil)
                 .AppendNonEmptySwitch("-pub", settings.Publisher)
-                .AppendNonNullSwitch("-s", settings.SupportUrl)
-                .AppendNonNullSwitch("-ti", settings.TimeStampUri)
+                .AppendNonNullUriSwitch("-s", settings.SupportUrl)
+                .AppendNonNullUriSwitch("-ti", settings.TimeStampUri)
                 .AppendNonNullFilePathSwitch("-t", settings.ToFile, Environment)
                 .AppendNonEmptySwitch("-v", settings.Version)
                 .AppendIfNotDefaultSwitch("-w", settings.WpfBrowserApp, false);            

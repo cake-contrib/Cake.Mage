@@ -1,4 +1,5 @@
-﻿using Cake.Core;
+﻿using System;
+using Cake.Core;
 using Cake.Core.IO;
 
 namespace Cake.Mage
@@ -33,6 +34,11 @@ namespace Cake.Mage
         public static ProcessArgumentBuilder AppendNonNullDirectoryPathSwitch(this ProcessArgumentBuilder builder, string @switch, DirectoryPath directoryPath, ICakeEnvironment environment)
         {
             return directoryPath == null ? builder : builder.AppendSwitchQuoted(@switch, directoryPath.MakeAbsolute(environment).FullPath);
+        }
+
+        public static ProcessArgumentBuilder AppendNonNullUriSwitch(this ProcessArgumentBuilder builder, string @switch, Uri uri)
+        {
+            return uri == null ? builder : builder.AppendSwitchQuoted(@switch, uri.ToString());
         }
 
         public static ProcessArgumentBuilder AppendIfNotDefaultSwitch<T>(this ProcessArgumentBuilder builder, string @switch, T value, T defaultValue)

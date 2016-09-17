@@ -82,12 +82,6 @@ namespace Cake.Mage
         public FilePath ToFile { get; set; }
 
         /// <summary>
-        /// Existing manifest file to be used when running an update
-        /// </summary>
-        /// <value>The update file path.</value>
-        public FilePath UpdateFilePath { get; set; }
-
-        /// <summary>
         ///  Specifies the version of the application whose manifest is being
         /// generated or updated.Must be of the form "0.0.0.0".
         /// </summary>
@@ -99,5 +93,7 @@ namespace Cake.Mage
         /// </summary>
         /// <value>The WPF browser application.</value>
         public bool WpfBrowserApp { get; set; } = false;
+
+
     }
 }

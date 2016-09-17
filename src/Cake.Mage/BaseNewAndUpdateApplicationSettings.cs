@@ -2,6 +2,10 @@ using Cake.Core.IO;
 
 namespace Cake.Mage
 {
+    /// <summary>
+    /// Class BaseNewAndUpdateApplicationSettings.
+    /// </summary>
+    /// <seealso cref="Cake.Mage.BaseNewAndUpdateMageSettings" />
     public abstract class BaseNewAndUpdateApplicationSettings : BaseNewAndUpdateMageSettings
     {
         /// <summary>

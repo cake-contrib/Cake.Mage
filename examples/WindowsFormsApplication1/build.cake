@@ -39,7 +39,9 @@ Task("Build")
     {
       // Use MSBuild
       MSBuild("./WindowsFormsApplication1.sln", settings =>
-        settings.SetConfiguration(configuration));
+        settings
+            .SetConfiguration(configuration)
+            .SetVerbosity(Verbosity.Minimal));
     }
     else
     {
@@ -53,11 +55,30 @@ Task("Build-Click-Once")
     .IsDependentOn("Build")
     .Does(() =>
 {
+    EnsureDirectoryExists("./dist");
+    CleanDirectory("./dist");
+
     MageNewApplication(new NewApplicationSettings{
-        ToFile = "WindowsFormsApplication1.exe.manifest",
+        ToFile = "./dist/WindowsFormsApplication1.manifest",
         Name = "Windows Form Application",
         Version = "1.0.0.0",
         FromDirectory = "./WindowsFormsApplication1/bin/Release"
+    });
+
+    MageUpdateApplication(new UpdateApplicationSettings("./dist/WindowsFormsApplication1.manifest") {
+        UseManifestForTrust = true,
+        SupportUrl = new Uri("http://www.example.com"),
+        FromDirectory = "./WindowsFormsApplication1/bin/Release"
+    });
+
+    MageNewDeployment(new NewDeploymentSettings{
+        AppManifest = "./dist/WindowsFormsApplication1.manifest",
+        ToFile = "./dist/WindowsFormsApplication1.application",
+        ProviderUrl = new Uri("\\\\myServer\\myShare\\WindowsFormsApplication1.application")
+    });
+
+    MageUpdateDeployment(new UpdateDeploymentSettings("./dist/WindowsFormsApplication1.application") {
+        ProviderUrl = new Uri("\\\\myServerOtherServer\\myShare\\WindowsFormsApplication1.application")
     });
 });
 
