@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Cake.Core;
 using Cake.Core.IO;
@@ -52,15 +53,43 @@ namespace Cake.Mage
         }
     }
 
+    internal class SignMageTool : MageTool<SignSettings>
+    {
+        /// <summary>
+        /// Signs a mage deployment or application.
+        /// </summary>
+        /// <param name="settings">The settings.</param>
+        public void Sign(SignSettings settings) => Run(settings, GetSignArguments(settings));
+
+        private ProcessArgumentBuilder GetSignArguments(SignSettings settings)
+        {
+            var builder = new ProcessArgumentBuilder();
+            if (!string.IsNullOrWhiteSpace(settings.Password) && settings.CertFile == null)
+                throw new ArgumentException("Password requires CertFile to be set", nameof(settings.CertFile));
+
+            builder.Append("-sign");
+            builder.AppendQuoted(settings.FileToSign.MakeAbsolute(Environment).ToString());
+            builder.AppendNonEmptySecretSwitch("-pwd", settings.Password);
+            builder.AppendNonNullFilePathSwitch("-certFile", settings.CertFile, Environment);
+            builder.AppendNonNullFilePathSwitch("-toFile", settings.ToFile, Environment);
+            builder.AppendNonEmptyQuotedSwitch("-certHash", settings.CertHash);
+
+            return builder;
+        }
+
+        internal SignMageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, DotNetToolResolver dotNetToolResolver) : base(fileSystem, environment, processRunner, tools, registry, dotNetToolResolver)
+        { }
+    }
+
     internal class NewOrUpdateMageTool : MageTool<BaseNewAndUpdateMageSettings>
     {
         /// <summary>
         /// Runs a new or update Mage.exe command
         /// </summary>
         /// <param name="settings">The settings.</param>
-        public void NewOrUpdate(BaseNewAndUpdateMageSettings settings) => Run(settings, GetArguments(settings));
+        public void NewOrUpdate(BaseNewAndUpdateMageSettings settings) => Run(settings, GetNewOrUpdateArguments(settings));
 
-        private ProcessArgumentBuilder GetArguments( BaseNewAndUpdateMageSettings settings)
+        private ProcessArgumentBuilder GetNewOrUpdateArguments( BaseNewAndUpdateMageSettings settings)
         {
             var builder = new ProcessArgumentBuilder();
 
@@ -123,5 +152,6 @@ namespace Cake.Mage
         internal NewOrUpdateMageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, DotNetToolResolver dotNetToolResolver) : base(fileSystem, environment, processRunner, tools, registry, dotNetToolResolver)
         {
         }
+
     }
 }

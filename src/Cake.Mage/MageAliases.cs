@@ -93,6 +93,30 @@ namespace Cake.Mage
 
             NewOrUpdate(context, settings);
         }
+        
+        /// <summary>
+        /// Signs an application or deployment.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// MageSign(new SignSettings("./dist/WindowsFormsApplication1.application") {
+        ///     CertFile = ".\\example.com.pfx",
+        ///     Password = "password"
+        /// });
+        /// </code>
+        /// </example>
+        /// <param name="context"></param>
+        /// <param name="settings"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        [CakeMethodAlias]
+        public static void MageSign(this ICakeContext context, SignSettings settings)
+        {
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
+            
+            var resolver = new DotNetToolResolver(context.FileSystem, context.Environment, context.Registry);
+            var runner = new SignMageTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools, context.Registry, resolver);
+            runner.Sign(settings);
+        }
 
         private static void NewOrUpdate(ICakeContext context, BaseNewAndUpdateMageSettings settings)
         {

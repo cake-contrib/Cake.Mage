@@ -80,6 +80,11 @@ Task("Build-Click-Once")
     MageUpdateDeployment(new UpdateDeploymentSettings("./dist/WindowsFormsApplication1.application") {
         ProviderUrl = new Uri("\\\\myServerOtherServer\\myShare\\WindowsFormsApplication1.application")
     });
+
+    MageSign(new SignSettings("./dist/WindowsFormsApplication1.application") {
+        CertFile = ".\\example.com.pfx",
+        Password = "password"
+    });
 });
 
 //////////////////////////////////////////////////////////////////////

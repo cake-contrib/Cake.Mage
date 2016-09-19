@@ -6,6 +6,9 @@ using Cake.Core.IO;
 
 namespace Cake.Mage
 {
+    /// <summary>
+    /// Class DotNetToolResolver. This class cannot be inherited.
+    /// </summary>
     internal sealed class DotNetToolResolver 
     {
         private readonly IFileSystem _fileSystem;
@@ -98,6 +101,7 @@ namespace Cake.Mage
                     }
                 }
             }
+
             return null;
         }
     }
