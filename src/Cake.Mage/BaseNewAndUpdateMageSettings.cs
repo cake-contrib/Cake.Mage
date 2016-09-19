@@ -57,12 +57,6 @@ namespace Cake.Mage
         public string Publisher { get; set; }
 
         /// <summary>
-        /// Gets or sets the existing file to be signed.
-        /// </summary>
-        /// <value>The sign file path.</value>
-        public FilePath SignFilePath { get; set; }
-
-        /// <summary>
         /// Gets or sets the support URL for the application.
         /// </summary>
         /// <value>The support URL.</value>

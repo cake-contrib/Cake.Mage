@@ -10,11 +10,20 @@ namespace Cake.Mage
     public abstract class BaseNewAndUpdateDeploymentSettings : BaseNewAndUpdateMageSettings
     {
         /// <summary>
-        /// Gets or sets the code base of the app manifest to be placed in the
+        /// Gets or sets the URI code base of the app manifest to be placed in the
         /// deployment manifest being generated or updated.
         /// </summary>
+        /// <remarks>If specified <see cref="AppCodeBaseFilePath"/> must not be specified.</remarks>
         /// <value>The application code base.</value>
-        public string AppCodeBase { get; set; }
+        public Uri AppCodeBaseUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the file path code base of the app manifest to be placed in the
+        /// deployment manifest being generated or updated.
+        /// </summary>
+        /// <remarks>If specified <see cref="AppCodeBaseUri"/> must not be specified.</remarks>
+        /// <value>The application code base.</value>
+        public FilePath AppCodeBaseFilePath { get; set; }
 
         /// <summary>
         /// Gets or sets the local path to an application manifest that is being

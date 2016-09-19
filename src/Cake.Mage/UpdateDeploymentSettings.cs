@@ -9,7 +9,7 @@ namespace Cake.Mage
     public class UpdateDeploymentSettings : BaseNewAndUpdateDeploymentSettings
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateApplicationSettings"/> class.
+        /// Initializes a new instance of the <see cref="UpdateDeploymentSettings"/> class.
         /// </summary>
         /// <param name="fileToUpdate">The file to update.</param>
         public UpdateDeploymentSettings(FilePath fileToUpdate)

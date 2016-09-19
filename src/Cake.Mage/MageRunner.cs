@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Cake.Core;
 using Cake.Core.IO;
@@ -10,6 +9,8 @@ namespace Cake.Mage
     /// <summary>
     /// The Mage tool runner.
     /// </summary>
+    /// <typeparam name="TSettings">The type of the tool settings.</typeparam>
+    /// <seealso cref="Cake.Core.Tooling.Tool{TSettings}" />
     internal abstract class MageTool<TSettings> : Tool<TSettings> where TSettings : ToolSettings
     {
         private const string Executable = "mage.exe";
@@ -21,6 +22,7 @@ namespace Cake.Mage
             Environment = environment;
             _resolver = dotNetToolResolver ?? new DotNetToolResolver(fileSystem, Environment, registry);
         }
+
         /// <summary>
         /// Gets the name of the tool.
         /// </summary>
@@ -36,7 +38,7 @@ namespace Cake.Mage
         /// <returns>The tool executable name.</returns>
         protected override IEnumerable<string> GetToolExecutableNames()
         {
-            return new [] { Executable };
+            return new[] { Executable };
         }
 
         /// <summary>
@@ -51,107 +53,5 @@ namespace Cake.Mage
                 ? new[] { path }
                 : Enumerable.Empty<FilePath>();
         }
-    }
-
-    internal class SignMageTool : MageTool<SignSettings>
-    {
-        /// <summary>
-        /// Signs a mage deployment or application.
-        /// </summary>
-        /// <param name="settings">The settings.</param>
-        public void Sign(SignSettings settings) => Run(settings, GetSignArguments(settings));
-
-        private ProcessArgumentBuilder GetSignArguments(SignSettings settings)
-        {
-            var builder = new ProcessArgumentBuilder();
-            if (!string.IsNullOrWhiteSpace(settings.Password) && settings.CertFile == null)
-                throw new ArgumentException("Password requires CertFile to be set", nameof(settings.CertFile));
-
-            builder.Append("-sign");
-            builder.AppendQuoted(settings.FileToSign.MakeAbsolute(Environment).ToString());
-            builder.AppendNonEmptySecretSwitch("-pwd", settings.Password);
-            builder.AppendNonNullFilePathSwitch("-certFile", settings.CertFile, Environment);
-            builder.AppendNonNullFilePathSwitch("-toFile", settings.ToFile, Environment);
-            builder.AppendNonEmptyQuotedSwitch("-certHash", settings.CertHash);
-
-            return builder;
-        }
-
-        internal SignMageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, DotNetToolResolver dotNetToolResolver) : base(fileSystem, environment, processRunner, tools, registry, dotNetToolResolver)
-        { }
-    }
-
-    internal class NewOrUpdateMageTool : MageTool<BaseNewAndUpdateMageSettings>
-    {
-        /// <summary>
-        /// Runs a new or update Mage.exe command
-        /// </summary>
-        /// <param name="settings">The settings.</param>
-        public void NewOrUpdate(BaseNewAndUpdateMageSettings settings) => Run(settings, GetNewOrUpdateArguments(settings));
-
-        private ProcessArgumentBuilder GetNewOrUpdateArguments( BaseNewAndUpdateMageSettings settings)
-        {
-            var builder = new ProcessArgumentBuilder();
-
-            var newOrUpdateApplicationSettings = settings as BaseNewAndUpdateApplicationSettings;
-            
-            if (newOrUpdateApplicationSettings != null)
-            {
-                if (newOrUpdateApplicationSettings is NewApplicationSettings)
-                {
-                    builder = builder.Append("-new Application");
-                }
-                else
-                {
-                    var updatePath = ((UpdateApplicationSettings) newOrUpdateApplicationSettings).FileToUpdate.MakeAbsolute(Environment).FullPath;
-                    builder = builder.AppendSwitchQuoted("-update", updatePath);
-                    
-                }
-
-                builder = builder.AppendNonNullDirectoryPathSwitch("-fd", newOrUpdateApplicationSettings.FromDirectory, Environment)
-                        .AppendNonNullFilePathSwitch("-if", newOrUpdateApplicationSettings.IconFile, Environment)
-                        .AppendIfNotDefaultSwitch("-tr", newOrUpdateApplicationSettings.TrustLevel, TrustLevel.Default)
-                        .AppendIfNotDefaultSwitch("-um", newOrUpdateApplicationSettings.UseManifestForTrust, false);
-            }
-            else
-            {
-                var newOrUpdateDeploymentSettings = (BaseNewAndUpdateDeploymentSettings) settings;
-                if (newOrUpdateDeploymentSettings is NewDeploymentSettings)
-                {
-                    builder = builder.Append("-new Deployment");
-                }
-                else
-                {
-                    var updatePath = ((UpdateDeploymentSettings) newOrUpdateDeploymentSettings).FileToUpdate.MakeAbsolute(Environment).FullPath;
-                    builder = builder.AppendSwitchQuoted("-update", updatePath);
-                }
-
-                builder = builder
-                    .AppendNonEmptySwitch("-appc", newOrUpdateDeploymentSettings.AppCodeBase)
-                    .AppendNonNullFilePathSwitch("-appm", newOrUpdateDeploymentSettings.AppManifest, Environment)
-                    .AppendIfNotDefaultSwitch("-i", newOrUpdateDeploymentSettings.Install, true)
-                    .AppendNonEmptySwitch("-mv", newOrUpdateDeploymentSettings.MinVersion)
-                    .AppendNonNullSwitch("-pu", newOrUpdateDeploymentSettings.ProviderUrl);
-            }
-
-            return builder
-                .AppendIfNotDefaultSwitch("-a", settings.Algorithm, Algorithm.SHA1RSA)
-                .AppendNonNullFilePathSwitch("-cf", settings.CertFile, Environment)
-                .AppendNonEmptySwitch("-certHash", settings.CertHash)
-                .AppendNonEmptyQuotedSwitch("-n", settings.Name)
-                .AppendNonEmptySecretSwitch("-pwd", settings.Password)
-                .AppendIfNotDefaultSwitch("-p", settings.Processor, Processor.Msil)
-                .AppendNonEmptySwitch("-pub", settings.Publisher)
-                .AppendNonNullUriSwitch("-s", settings.SupportUrl)
-                .AppendNonNullUriSwitch("-ti", settings.TimeStampUri)
-                .AppendNonNullFilePathSwitch("-t", settings.ToFile, Environment)
-                .AppendNonEmptySwitch("-v", settings.Version)
-                .AppendIfNotDefaultSwitch("-w", settings.WpfBrowserApp, false);            
-        }
-
-        internal NewOrUpdateMageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, DotNetToolResolver dotNetToolResolver) : base(fileSystem, environment, processRunner, tools, registry, dotNetToolResolver)
-        {
-        }
-
     }
 }

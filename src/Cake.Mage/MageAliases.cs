@@ -19,7 +19,6 @@ namespace Cake.Mage
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="settings">The settings.</param>
-        /// <exception cref="ArgumentNullException"></exception>
         [CakeMethodAlias]
         public static void MageNewApplication(this ICakeContext context, NewApplicationSettings settings)
         {
@@ -43,7 +42,6 @@ namespace Cake.Mage
         /// });
         /// </code>
         /// </example>
-        /// <exception cref="ArgumentNullException"></exception>
         [CakeMethodAlias]
         public static void MageNewDeployment(this ICakeContext context, NewDeploymentSettings settings)
         {
@@ -64,7 +62,6 @@ namespace Cake.Mage
         ///     SupportUrl = new Uri("http://www.example.com")
         /// });
         /// </code></example>
-        /// <exception cref="ArgumentNullException"></exception>
         [CakeMethodAlias]
         public static void MageUpdateApplication(this ICakeContext context, UpdateApplicationSettings settings)
         {
@@ -85,7 +82,6 @@ namespace Cake.Mage
         /// });
         /// </example>
         /// </code>
-        /// <exception cref="ArgumentNullException"></exception>
         [CakeMethodAlias]
         public static void MageUpdateDeployment(this ICakeContext context, UpdateDeploymentSettings settings)
         {
@@ -93,26 +89,25 @@ namespace Cake.Mage
 
             NewOrUpdate(context, settings);
         }
-        
+
         /// <summary>
         /// Signs an application or deployment.
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="settings">The settings.</param>
         /// <example>
-        /// <code>
+        ///   <code>
         /// MageSign(new SignSettings("./dist/WindowsFormsApplication1.application") {
-        ///     CertFile = ".\\example.com.pfx",
-        ///     Password = "password"
+        /// CertFile = ".\\example.com.pfx",
+        /// Password = "password"
         /// });
         /// </code>
         /// </example>
-        /// <param name="context"></param>
-        /// <param name="settings"></param>
-        /// <exception cref="ArgumentNullException"></exception>
         [CakeMethodAlias]
         public static void MageSign(this ICakeContext context, SignSettings settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
-            
+
             var resolver = new DotNetToolResolver(context.FileSystem, context.Environment, context.Registry);
             var runner = new SignMageTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools, context.Registry, resolver);
             runner.Sign(settings);
@@ -120,11 +115,8 @@ namespace Cake.Mage
 
         private static void NewOrUpdate(ICakeContext context, BaseNewAndUpdateMageSettings settings)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            if (settings == null) throw new ArgumentNullException(nameof(settings));
-
             var resolver = new DotNetToolResolver(context.FileSystem, context.Environment, context.Registry);
-            var runner = new NewOrUpdateMageTool(context.FileSystem, context.Environment,context.ProcessRunner, context.Tools, context.Registry, resolver);
+            var runner = new NewOrUpdateMageTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools, context.Registry, resolver);
             runner.NewOrUpdate(settings);
         }
     }

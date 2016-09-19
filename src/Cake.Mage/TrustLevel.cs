@@ -9,14 +9,17 @@ namespace Cake.Mage
         /// Assigned a trust level based on the zone in which their URL resides
         /// </summary>
         Default,
+
         /// <summary>
         /// Internet trust level
         /// </summary>
         Internet,
+
         /// <summary>
         /// Intranet trust level
         /// </summary>
         Intranet,
+
         /// <summary>
         /// Full trust level
         /// </summary>
