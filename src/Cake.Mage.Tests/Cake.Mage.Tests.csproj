@@ -75,6 +75,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
     <Compile Include="AliasTests.cs" />
     <Compile Include="MageSignFixture.cs" />
     <Compile Include="NewAndUpdateMageFixture.cs" />
