@@ -1,0 +1,373 @@
+<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="description">
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/Cake.Mage/assets/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/Cake.Mage/assets/img/favicon.ico" type="image/x-icon">
+        <title>Docs - API - SignSettings Class</title>
+        <link href="/Cake.Mage/assets/css/mermaid.css" rel="stylesheet">
+        <link href="/Cake.Mage/assets/css/highlight.css" rel="stylesheet">
+        <link href="/Cake.Mage/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="/Cake.Mage/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
+        <link href="/Cake.Mage/assets/css/theme/theme.css" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,400i,700,700i" rel="stylesheet">
+        <link href="/Cake.Mage/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="/Cake.Mage/assets/css/override.css" rel="stylesheet">
+        <script src="/Cake.Mage/assets/js/jquery-2.2.3.min.js"></script>
+        <script src="/Cake.Mage/assets/js/bootstrap.min.js"></script>        
+        <script src="/Cake.Mage/assets/js/app.min.js"></script>         
+        <script src="/Cake.Mage/assets/js/highlight.pack.js"></script>   
+        <script src="/Cake.Mage/assets/js/jquery.slimscroll.min.js"></script>
+        <script src="/Cake.Mage/assets/js/jquery.sticky-kit.min.js"></script>
+        <script src="/Cake.Mage/assets/js/mermaid.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Cake.Mage/assets/js/html5shiv.min.js"></script>
+        <script src="/Cake.Mage/assets/js/respond.min.js"></script>
+        <![endif]-->  
+
+        
+    </head>
+    <body class="hold-transition wyam layout-boxed  ">    
+        <div class="top-banner"></div>
+        <div class="wrapper with-container">
+            <!-- Header -->
+            <header class="main-header">   
+                     
+                <a href="/Cake.Mage/" class="logo">
+                            <span>Docs</span>
+                </a>   
+                         
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                                        
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/Cake.Mage/docs">Documentation</a></li>
+        <li><a href="/Cake.Mage/blog">Blog</a></li>
+        <li class="active"><a href="/Cake.Mage/api">API</a></li>
+ 
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="infobar" data-spy="affix" data-offset-top="60" data-offset-bottom="200"> 
+                    	
+	<div id="infobar-headings"><h6>On This Page</h6><p><a href="#Summary">Summary</a></p>
+<p><a href="#Syntax">Syntax</a></p>
+<p><a href="#Constructors">Constructors</a></p>
+<p><a href="#Properties">Properties</a></p>
+<p><a href="#SeeAlso">See Also</a></p>
+<hr class="infobar-hidden">
+</div>
+
+                </section>
+                <section class="sidebar">                    
+                    	
+	    <script src="/assets/js/lunr.min.js"></script>
+    <script src="/assets/js/searchIndex.js"></script>
+    <div class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="search" id="search" class="form-control" placeholder="Search Types...">
+            <span class="input-group-btn">
+                <button class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+    <div id="search-results">
+    </div>
+    <script>
+        function runSearch(query){
+            $("#search-results").empty();			
+            if( query.length < 2 ){
+                return;
+            }			
+            var results = searchModule.search("*" + query + "*");
+            var listHtml = "<ul class='sidebar-menu'>";	
+            listHtml += "<li class='header'>Type Results</li>";	
+            if(results.length == 0 ){
+                listHtml += "<li>No results found</li>";
+            } else {					
+                for(var i = 0; i < results.length; ++i){
+                    var res = results[i];
+                    listHtml += "<li><a href='" + res.url + "'>" + res.title + "</a></li>";
+                }				
+            }
+            listHtml += "</ul>";				
+            $("#search-results").append(listHtml);
+        }
+
+        $(document).ready(function(){
+            $("#search").on('input propertychange paste', function() {
+                runSearch($("#search").val());
+            });
+        });
+    </script>
+	
+    <hr>
+
+                    <ul class="sidebar-menu">
+                        
+			<li class="header">Namespace</li>
+		<li><a href="/Cake.Mage/api/Cake.Mage">Cake<wbr>.Mage</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Enum Types</li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/Algorithm">Algorithm</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/Processor">Processor</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/TrustLevel">TrustLevel</a></li>
+			<li class="header">Class Types</li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateApplicationSettings">Base<wbr>New<wbr>And<wbr>Update<wbr>Application<wbr>Settings</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateDeploymentSettings">Base<wbr>New<wbr>And<wbr>Update<wbr>Deployment<wbr>Settings</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateMageSettings">Base<wbr>New<wbr>And<wbr>Update<wbr>Mage<wbr>Settings</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/MageAliases">MageAliases</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/NewApplicationSettings">New<wbr>Application<wbr>Settings</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/NewDeploymentSettings">New<wbr>Deployment<wbr>Settings</a></li>
+				<li class="selected"><a href="/Cake.Mage/api/Cake.Mage/SignSettings">SignSettings</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/UpdateApplicationSettings">Update<wbr>Application<wbr>Settings</a></li>
+				<li><a href="/Cake.Mage/api/Cake.Mage/UpdateDeploymentSettings">Update<wbr>Deployment<wbr>Settings</a></li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+
+<section class="content-header">
+	<h1>SignSettings <small>Class</small></h1>
+</section>
+<section class="content">
+	
+	
+		<h1 id="Summary">Summary</h1>
+	<div class="lead">
+    Class SignSettings.
+    </div>
+
+		<div class="panel panel-default">
+  			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6">
+						<dl class="dl-horizontal">		
+
+								<dt>Namespace</dt>
+								<dd><a href="/Cake.Mage/api/Cake.Mage">Cake<wbr>.Mage</a></dd>
+											
+							
+								<dt>Base Types</dt>
+								<dd>
+									<ul class="list-unstyled">										
+											<li>ToolSettings</li>								
+									</ul>
+								</dd>				
+							
+							
+						</dl>
+					</div>		
+					<div class="col-md-6">
+						<div class="mermaid">
+							graph TD
+	Base0["ToolSettings"]--&gt;Type
+	Type["SignSettings"]
+class Type type-node
+
+						</div>
+					</div>
+				</div>
+  			</div>
+		</div>
+
+	<h1 id="Syntax">Syntax</h1>
+	<pre><code>public class SignSettings : ToolSettings</code></pre>
+
+
+
+
+
+
+			<h1 id="Constructors">Constructors</h1>
+			<div class="box">
+				<div class="box-body no-padding table-responsive">
+					<table class="table table-striped table-hover two-cols">
+						<thead>
+							<tr>
+								<th>Name</th>
+									<th>Summary</th>
+							</tr>
+						</thead>
+							<tbody><tr>
+								<td><a href="/Cake.Mage/api/Cake.Mage/SignSettings/51D5429D">SignSettings<wbr>()<wbr></a></td>
+									<td>
+    Initializes a new instance of the <code class="cs"><a href="/Cake.Mage/api/Cake.Mage/SignSettings">SignSettings</a></code> class.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Mage/api/Cake.Mage/SignSettings/B98F0523">SignSettings<wbr>(FilePath)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <code class="cs"><a href="/Cake.Mage/api/Cake.Mage/SignSettings">SignSettings</a></code> class.
+    </td>
+							</tr>
+					</tbody></table>
+				</div>
+			</div>
+		
+
+
+
+			<h1 id="Properties">Properties</h1>
+			<div class="box">
+				<div class="box-body no-padding table-responsive">
+					<table class="table table-striped table-hover three-cols">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Value</th>
+								<th>Summary</th>
+							</tr>
+						</thead>
+							<tbody><tr>
+								<td><a href="/Cake.Mage/api/Cake.Mage/SignSettings/90233910">CertFile</a></td>
+								<td>FilePath</td>
+								<td>
+									<div>
+    Gets or sets the location of a digital certificate for signing a manifest
+    </div>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Mage/api/Cake.Mage/SignSettings/38771E4D">CertHash</a></td>
+								<td>string</td>
+								<td>
+									<div>
+    <p>
+    Gets or sets the hash of a digital certificate stored in the personal certificate store
+    of the client computer. This corresponds to the Thumbprint property of a 
+    digital certificate viewed in the Windows Certificates Console.
+    </p>
+    <p>
+    The hashSignature can be either uppercase or lowercase, and can be supplied either
+     as a single string or with each octet of the Thumbprint separated by spaces and 
+    the entire Thumbprint enclosed in quotation marks.
+    </p>
+    </div>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Mage/api/Cake.Mage/SignSettings/0183C0DA">FileToSign</a></td>
+								<td>FilePath</td>
+								<td>
+									<div>
+    Gets or sets the file to sign.
+    </div>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Mage/api/Cake.Mage/SignSettings/C1D26280">Password</a></td>
+								<td>string</td>
+								<td>
+									<div>
+    Gets or sets the password that is used for signing a manifest with a digital certificate. Must be 
+    used in conjunction with the CertFile option.
+    </div>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Mage/api/Cake.Mage/SignSettings/DF7A2B06">ToFile</a></td>
+								<td>FilePath</td>
+								<td>
+									<div>
+    Gets or sets the output path of the file that has been created or modified.
+    </div>
+								</td>
+							</tr>
+					</tbody></table>
+				</div>
+			</div>
+		
+
+
+	<h1 id="SeeAlso">See Also</h1>
+	<ul class="list-unstyled">
+			<li>Cake.Core.Tooling.ToolSettings</li>
+	</ul>
+
+	
+</section>
+                
+            </div>           
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer">
+                Generated by <a href="https://wyam.io">Wyam</a>
+            </footer>
+        </div>
+        <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+        
+        <script>           
+            // Close the sidebar if we select an anchor link
+            $(".main-sidebar a[href^='#']:not('.expand')").click(function(){
+                $(document.body).removeClass('sidebar-open');
+            });
+            
+            $(document).load(function() {
+                mermaid.initialize(
+                {
+                    flowchart:
+                    {
+                        htmlLabels: false,
+                        useMaxWidth:false
+                    }
+                });  
+                mermaid.init(undefined, ".mermaid")
+                $('svg').addClass('img-responsive');
+                
+                $('pre code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });  
+            });
+            hljs.initHighlightingOnLoad();
+
+            // Back to top
+            $(window).scroll(function() {
+                if ($(this).scrollTop() >= 200) {        // If page is scrolled more than 50px
+                    $('#return-to-top').fadeIn(1000);    // Fade in the arrow
+                } else {
+                    $('#return-to-top').fadeOut(1000);   // Else fade out the arrow
+                }
+            });
+            $('#return-to-top').click(function() {      // When arrow is clicked
+                $('body,html').animate({
+                    scrollTop : 0                       // Scroll to top of body
+                }, 500);
+            });
+        </script>
+    
+</body></html>
