@@ -4,24 +4,22 @@
     <id>Cake.Mage</id>
     <version>$version$</version>
     <authors>Phil Scott</authors>
-    <owners>Phil Scott</owners>
+    <owners>Phil Scott, cake-contrib</owners>
     <title>Cake.Mage</title>
     <description>Cake addin to provide support for Mage.exe.</description>
     <summary>Cake addin to provide support for Mage.exe.</summary>
-    <licenseUrl>https://raw.githubusercontent.com/enkafan/Cake.Mage/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/enkafan/Cake.Mage</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/enkafan/Cake.Mage/master/icon.png</iconUrl>
+    <licenseUrl>https://raw.githubusercontent.com/cake-contrib/Cake.Mage/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/cake-contrib/Cake.Mage</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/cake-contrib/Cake.Mage/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Phil Scott 2016</copyright>
     <releaseNotes>Initial Release</releaseNotes>
     <tags>Cake Script Build Mage</tags>
-    <dependencies>
-      <dependency id="Cake.Core" version="0.14.0" />
-    </dependencies>
   </metadata>
 
   <files>
-    <file src="src/Cake.Mage/bin/Release/Cake.Mage.dll" target="lib/net45" />
-    <file src="src/Cake.Mage/bin/Release/Cake.Mage.xml" target="lib/net45" />
+    <file src="Cake.Mage.dll" target="lib/net45" />
+    <file src="Cake.Mage.xml" target="lib/net45" />
+    <file src="Cake.Mage.pdb" target="lib/net45" />
   </files>
 </package>
