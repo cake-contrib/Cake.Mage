@@ -57,6 +57,7 @@ namespace Cake.Mage
             var files = new List<FilePath>
             {
                 // 64-bit
+                programFiles64Bit.Combine(@"Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7.2 Tools").CombineWithFilePath(toolExecutable),
                 programFiles64Bit.Combine(@"Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools").CombineWithFilePath(toolExecutable),
                 programFiles64Bit.Combine(@"Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools").CombineWithFilePath(toolExecutable),
                 programFiles64Bit.Combine(@"Windows Kits\8.1\bin\x64").CombineWithFilePath(toolExecutable),
@@ -64,6 +65,7 @@ namespace Cake.Mage
                 programFiles64Bit.Combine(@"Microsoft SDKs\Windows\v7.1A\Bin").CombineWithFilePath(toolExecutable),
 
                 // x86
+                programFilesX86.Combine(@"Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7.2 Tools").CombineWithFilePath(toolExecutable),
                 programFilesX86.Combine(@"Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools").CombineWithFilePath(toolExecutable),
                 programFilesX86.Combine(@"Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools").CombineWithFilePath(toolExecutable),
                 programFilesX86.Combine(@"Windows Kits\8.1\bin\x86").CombineWithFilePath(toolExecutable),
