@@ -18,8 +18,8 @@
   </metadata>
 
   <files>
-    <file src="Cake.Mage.dll" target="lib/net45" />
-    <file src="Cake.Mage.xml" target="lib/net45" />
-    <file src="Cake.Mage.pdb" target="lib/net45" />
+    <file src="Cake.Mage.dll" target="lib/net471" />
+    <file src="Cake.Mage.xml" target="lib/net471" />
+    <file src="Cake.Mage.pdb" target="lib/net471" />
   </files>
 </package>
