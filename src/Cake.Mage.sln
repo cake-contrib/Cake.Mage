@@ -1,17 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{675AE6B0-8DFC-4033-899A-190B177EF712}"
 	ProjectSection(SolutionItems) = preProject
 		..\nuspec\nuget\Cake.Mage.nuspec = ..\nuspec\nuget\Cake.Mage.nuspec
+		..\README.md = ..\README.md
 		..\setup.cake = ..\setup.cake
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Mage", "Cake.Mage\Cake.Mage.csproj", "{09A33118-F8A7-4354-886D-FF23B2E35AB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.Mage", "Cake.Mage\Cake.Mage.csproj", "{09A33118-F8A7-4354-886D-FF23B2E35AB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Mage.Tests", "Cake.Mage.Tests\Cake.Mage.Tests.csproj", "{28644648-B16A-4237-BA77-15565CDFD898}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.Mage.Tests", "Cake.Mage.Tests\Cake.Mage.Tests.csproj", "{28644648-B16A-4237-BA77-15565CDFD898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +31,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30CF3971-D0A2-4E45-A0E6-BE820342D9F0}
 	EndGlobalSection
 EndGlobal
