@@ -16,6 +16,26 @@ namespace Cake.Mage.Tests
 
             fixture.Run().Args.ShouldBe("-new Deployment");
         }
+        [Fact]
+        public void Install_switch_should_be_omitted_when_false_or_default()
+        {
+            var fixture = new NewAndUpdateMageFixture
+            {
+                Settings = new NewDeploymentSettings { Install = false }
+            };
+
+            fixture.Run().Args.ShouldBe("-new Deployment");
+        }
+        [Fact]
+        public void Install_switch_should_be_present_when_true()
+        {
+            var fixture = new NewAndUpdateMageFixture
+            {
+                Settings = new NewDeploymentSettings { Install = true }
+            };
+
+            fixture.Run().Args.ShouldBe("-new Deployment -i True");
+        }
 
         [Fact]
         public void Update_deployment_has_the_proper_command_line_switches()
@@ -97,20 +117,6 @@ namespace Cake.Mage.Tests
             };
 
             fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -mv 1.0.0.0");
-        }
-
-        [Fact]
-        public void Install_should_be_included_if_false()
-        {
-            var fixture = new NewAndUpdateMageFixture
-            {
-                Settings = new UpdateDeploymentSettings("output.deployment")
-                {
-                    Install = false
-                }
-            };
-
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -i False");
         }
 
         [Fact]
