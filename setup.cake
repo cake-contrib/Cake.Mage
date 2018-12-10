@@ -8,7 +8,10 @@ BuildParameters.SetParameters(context: Context,
                             title: "Cake.Mage",
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Mage",
-                            appVeyorAccountName: "cakecontrib");
+                            appVeyorAccountName: "cakecontrib",
+							shouldRunDupFinder: false,
+							shouldRunInspectCode: false,
+							shouldRunCodecov: false);
 
 BuildParameters.PrintParameters(Context);
 
@@ -19,4 +22,4 @@ ToolSettings.SetToolSettings(context: Context,
                             testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
                             testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
 
-Build.Run();
+Build.RunDotNetCore();
