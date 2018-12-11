@@ -15,8 +15,6 @@ BuildParameters.SetParameters(context: Context,
 BuildParameters.PrintParameters(Context);
 
 ToolSettings.SetToolSettings(context: Context,
-                            dupFinderExcludePattern: new string[] { 
-                                BuildParameters.RootDirectoryPath + "/src/Cake.Mage.Tests/*.cs" },
                             dupFinderExcludePattern: new []
                             {
                                 BuildParameters.RootDirectoryPath + "/src/Cake.Mage/obj/**/*.*",
