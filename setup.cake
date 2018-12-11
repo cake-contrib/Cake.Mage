@@ -10,7 +10,7 @@ BuildParameters.SetParameters(context: Context,
                             repositoryName: "Cake.Mage",
                             appVeyorAccountName: "cakecontrib",
 							shouldRunDupFinder: false,
-							shouldRunInspectCode: false);
+							shouldRunInspectCode: true);
 
 BuildParameters.PrintParameters(Context);
 
