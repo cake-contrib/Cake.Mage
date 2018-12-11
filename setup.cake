@@ -9,7 +9,7 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Mage",
                             appVeyorAccountName: "cakecontrib",
-							shouldRunDupFinder: false,
+							shouldRunDupFinder: true,
 							shouldRunInspectCode: true);
 
 BuildParameters.PrintParameters(Context);
@@ -17,6 +17,11 @@ BuildParameters.PrintParameters(Context);
 ToolSettings.SetToolSettings(context: Context,
                             dupFinderExcludePattern: new string[] { 
                                 BuildParameters.RootDirectoryPath + "/src/Cake.Mage.Tests/*.cs" },
+                            dupFinderExcludePattern: new []
+                            {
+                                BuildParameters.RootDirectoryPath + "/src/Cake.Mage/obj/**/*.*",
+                                BuildParameters.RootDirectoryPath + "/src/Cake.Mage.Tests/**/*.cs",
+                            },
                             testCoverageFilter: "+[*]* -[xunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]* ",
                             testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
                             testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
