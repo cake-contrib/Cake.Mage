@@ -41,10 +41,10 @@ namespace Cake.Mage
 
         /// <summary>
         /// Gets or sets a value indicating whether if the application will be an installed or an online only
-        /// application.
+        /// application. Default is false.
         /// </summary>
         /// <value>The install.</value>
-        public bool Install { get; set; } = true;
+        public bool Install { get; set; } = false;
 
         /// <summary>
         /// Gets or sets whether the manifest being generated specifies a minimum version.

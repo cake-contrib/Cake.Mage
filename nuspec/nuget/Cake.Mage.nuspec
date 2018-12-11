@@ -10,16 +10,20 @@
     <summary>Cake addin to provide support for Mage.exe.</summary>
     <licenseUrl>https://raw.githubusercontent.com/cake-contrib/Cake.Mage/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/cake-contrib/Cake.Mage</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/cake-contrib/Cake.Mage/master/icon.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics@a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Phil Scott 2016</copyright>
     <releaseNotes>Initial Release</releaseNotes>
     <tags>Cake Script Build Mage</tags>
+    <repository type="GitHub" url="https://github.com/cake-contrib/Cake.Mage" />
   </metadata>
 
   <files>
-    <file src="Cake.Mage.dll" target="lib/net45" />
-    <file src="Cake.Mage.xml" target="lib/net45" />
-    <file src="Cake.Mage.pdb" target="lib/net45" />
+    <file src="netstandard2.0/Cake.Mage.dll" target="lib/netstandard2.0" />
+    <file src="netstandard2.0/Cake.Mage.xml" target="lib/netstandard2.0" />
+    <file src="netstandard2.0/Cake.Mage.pdb" target="lib/netstandard2.0" />
+    <file src="net461/Cake.Mage.dll" target="lib/net461" />
+    <file src="net461/Cake.Mage.xml" target="lib/net461" />
+    <file src="net461/Cake.Mage.pdb" target="lib/net461" />
   </files>
 </package>

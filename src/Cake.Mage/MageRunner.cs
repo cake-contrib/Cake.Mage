@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Cake.Core;
 using Cake.Core.IO;
 using Cake.Core.Tooling;
 
+[assembly: InternalsVisibleTo("Cake.Mage.Tests")]
 namespace Cake.Mage
 {
     /// <summary>

@@ -60,7 +60,7 @@ namespace Cake.Mage
                     .AppendNonNullUriSwitch("-appc", newOrUpdateDeploymentSettings.AppCodeBaseUri)
                     .AppendNonNullFilePathSwitch("-appc", newOrUpdateDeploymentSettings.AppCodeBaseFilePath, Environment)
                     .AppendNonNullFilePathSwitch("-appm", newOrUpdateDeploymentSettings.AppManifest, Environment)
-                    .AppendIfNotDefaultSwitch("-i", newOrUpdateDeploymentSettings.Install, true)
+                    .AppendIfNotDefaultSwitch("-i", newOrUpdateDeploymentSettings.Install, false)
                     .AppendNonEmptySwitch("-mv", newOrUpdateDeploymentSettings.MinVersion)
                     .AppendIfNotDefaultSwitch("-ip", newOrUpdateDeploymentSettings.IncludeProviderUrl, true)
                     .AppendNonNullUriSwitch("-pu", newOrUpdateDeploymentSettings.ProviderUrl);
