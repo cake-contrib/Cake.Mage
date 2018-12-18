@@ -36,6 +36,7 @@ http://cakebuild.net
 [CmdletBinding()]
 Param(
     [string]$Script = "setup.cake",
+    [ValidateSet("Default", "ReleaseNotes")]
     [string]$Target = "Default",
     [ValidateSet("Release", "Debug")]
     [string]$Configuration = "Release",
