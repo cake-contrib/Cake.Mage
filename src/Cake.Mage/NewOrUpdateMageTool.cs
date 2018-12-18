@@ -34,7 +34,7 @@ namespace Cake.Mage
                 }
 
                 builder = builder.AppendNonNullDirectoryPathSwitch("-fd", newOrUpdateApplicationSettings.FromDirectory, Environment)
-                    .AppendNonNullFilePathSwitch("-if", newOrUpdateApplicationSettings.IconFile, Environment)
+                    .AppendNonNullRelativeFilePathSwitch("-if", newOrUpdateApplicationSettings.IconFile, Environment)
                     .AppendIfNotDefaultSwitch("-tr", newOrUpdateApplicationSettings.TrustLevel, TrustLevel.Default)
                     .AppendIfNotDefaultSwitch("-um", newOrUpdateApplicationSettings.UseManifestForTrust, false);
             }
@@ -58,8 +58,8 @@ namespace Cake.Mage
 
                 builder = builder
                     .AppendNonNullUriSwitch("-appc", newOrUpdateDeploymentSettings.AppCodeBaseUri)
-                    .AppendNonNullFilePathSwitch("-appc", newOrUpdateDeploymentSettings.AppCodeBaseFilePath, Environment)
-                    .AppendNonNullFilePathSwitch("-appm", newOrUpdateDeploymentSettings.AppManifest, Environment)
+                    .AppendNonNullRelativeFilePathSwitch("-appc", newOrUpdateDeploymentSettings.AppCodeBaseFilePath, Environment)
+                    .AppendNonNullRelativeFilePathSwitch("-appm", newOrUpdateDeploymentSettings.AppManifest, Environment)
                     .AppendIfNotDefaultSwitch("-i", newOrUpdateDeploymentSettings.Install, false)
                     .AppendNonEmptySwitch("-mv", newOrUpdateDeploymentSettings.MinVersion)
                     .AppendIfNotDefaultSwitch("-ip", newOrUpdateDeploymentSettings.IncludeProviderUrl, true)

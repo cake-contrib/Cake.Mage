@@ -66,7 +66,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Application -if \"/Working/example.ico\"");
+            fixture.Run().Args.ShouldBe("-new Application -if \"example.ico\"");
         }
 
         [Fact]

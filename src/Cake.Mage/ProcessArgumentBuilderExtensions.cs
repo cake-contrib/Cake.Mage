@@ -25,7 +25,10 @@ namespace Cake.Mage
         {
             return filePath == null ? builder : builder.AppendSwitchQuoted(@switch, filePath.MakeAbsolute(environment).FullPath);
         }
-
+        public static ProcessArgumentBuilder AppendNonNullRelativeFilePathSwitch(this ProcessArgumentBuilder builder, string @switch, FilePath filePath, ICakeEnvironment environment)
+        {
+            return filePath == null ? builder : builder.AppendSwitchQuoted(@switch, filePath.FullPath);
+        }
         public static ProcessArgumentBuilder AppendNonNullDirectoryPathSwitch(this ProcessArgumentBuilder builder, string @switch, DirectoryPath directoryPath, ICakeEnvironment environment)
         {
             return directoryPath == null ? builder : builder.AppendSwitchQuoted(@switch, directoryPath.MakeAbsolute(environment).FullPath);

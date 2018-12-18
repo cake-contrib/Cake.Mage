@@ -74,7 +74,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -appc \"/Working/appcodebase/v1.0.0.0\"");
+            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -appc \"appcodebase/v1.0.0.0\"");
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -appm \"/Working/app.manifest\"");
+            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -appm \"app.manifest\"");
         }
 
         [Fact]
