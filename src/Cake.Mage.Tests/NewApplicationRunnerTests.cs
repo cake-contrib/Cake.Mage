@@ -1,5 +1,5 @@
 ﻿using Shouldly;
-using Xunit;
+using Xunit; 
 
 namespace Cake.Mage.Tests
 {
