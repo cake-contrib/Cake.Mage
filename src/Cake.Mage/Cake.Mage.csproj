@@ -17,6 +17,6 @@
     <DocumentationFile>bin\Release\net461\Cake.Mage.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.28.0" PrivateAssets="true" />
+    <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="true" />
   </ItemGroup>
 </Project>
