@@ -1,10 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{675AE6B0-8DFC-4033-899A-190B177EF712}"
 	ProjectSection(SolutionItems) = preProject
+		..\.appveyor.yml = ..\.appveyor.yml
 		..\nuspec\nuget\Cake.Mage.nuspec = ..\nuspec\nuget\Cake.Mage.nuspec
 		..\README.md = ..\README.md
 		..\setup.cake = ..\setup.cake
