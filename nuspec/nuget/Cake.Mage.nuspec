@@ -10,7 +10,7 @@
     <summary>Cake addin to provide support for Mage.exe.</summary>
     <licenseUrl>https://raw.githubusercontent.com/cake-contrib/Cake.Mage/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/cake-contrib/Cake.Mage</projectUrl>
-    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics@a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Phil Scott 2016</copyright>
     <releaseNotes>Initial Release</releaseNotes>
