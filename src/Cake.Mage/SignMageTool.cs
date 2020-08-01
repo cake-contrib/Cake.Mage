@@ -1,5 +1,6 @@
 ﻿using System;
 using Cake.Core;
+using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Tooling;
 
@@ -33,8 +34,8 @@ namespace Cake.Mage
         }
 
         internal SignMageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner,
-            IToolLocator tools, IRegistry registry, DotNetToolResolver dotNetToolResolver)
-            : base(fileSystem, environment, processRunner, tools, registry, dotNetToolResolver)
+            IToolLocator tools, IRegistry registry, ICakeLog log, DotNetToolResolver dotNetToolResolver)
+            : base(fileSystem, environment, processRunner, tools, registry, log, dotNetToolResolver)
         {
         }
     }

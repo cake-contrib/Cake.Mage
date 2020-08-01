@@ -11,7 +11,7 @@ namespace Cake.Mage.Tests
         [Fact]
         public void Can_resolve_mage()
         {
-            var resolver = new DotNetToolResolver(new FileSystem(), new CakeEnvironment(new CakePlatform(), new CakeRuntime(), new FakeLog()), new WindowsRegistry());
+            var resolver = new DotNetToolResolver(new FileSystem(), new CakeEnvironment(new CakePlatform(), new CakeRuntime(), new FakeLog()), new WindowsRegistry(), new FakeLog());
             var path = resolver.GetPath("mage.exe");
             path.ShouldNotBe(null);
         }
