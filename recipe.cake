@@ -6,9 +6,9 @@ BuildParameters.SetParameters(
     context: Context, 
     buildSystem: BuildSystem,
     sourceDirectoryPath: "./src",
-    title: "Cake.Flutter",
+    title: "Cake.Mage",
     repositoryOwner: "cake-contrib",
-    repositoryName: "Cake.Flutter",
+    repositoryName: "Cake.Mage",
     appVeyorAccountName: "cakecontrib",
 	shouldRunDupFinder: false,
     shouldRunInspectCode: false,
@@ -19,7 +19,7 @@ BuildParameters.PrintParameters(Context);
 
 ToolSettings.SetToolSettings(
     context: Context,
-    dupFinderExcludePattern: new string[] { BuildParameters.RootDirectoryPath + "/src/Cake.Flutter.Tests/*.cs" },
+    dupFinderExcludePattern: new string[] { BuildParameters.RootDirectoryPath + "/src/Cake.Mage.Tests/*.cs" },
     testCoverageFilter: "+[*]* -[nunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]*",
     testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
     testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
