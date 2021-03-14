@@ -1,203 +1,220 @@
 
-var camelCaseTokenizer = function (obj) {
+var camelCaseTokenizer = function (builder) {
+
+  var pipelineFunction = function (token) {
     var previous = '';
-    return obj.toString().trim().split(/[\s\-]+|(?=[A-Z])/).reduce(function(acc, cur) {
-        var current = cur.toLowerCase();
-        if(acc.length === 0) {
-            previous = current;
-            return acc.concat(current);
-        }
-        previous = previous.concat(current);
-        return acc.concat([current, previous]);
+    // split camelCaseString to on each word and combined words
+    // e.g. camelCaseTokenizer -> ['camel', 'case', 'camelcase', 'tokenizer', 'camelcasetokenizer']
+    var tokenStrings = token.toString().trim().split(/[\s\-]+|(?=[A-Z])/).reduce(function(acc, cur) {
+      var current = cur.toLowerCase();
+      if (acc.length === 0) {
+        previous = current;
+        return acc.concat(current);
+      }
+      previous = previous.concat(current);
+      return acc.concat([current, previous]);
     }, []);
+
+    // return token for each string
+    // will copy any metadata on input token
+    return tokenStrings.map(function(tokenString) {
+      return token.clone(function(str) {
+        return tokenString;
+      })
+    });
+  }
+
+  lunr.Pipeline.registerFunction(pipelineFunction, 'camelCaseTokenizer')
+
+  builder.pipeline.before(lunr.stemmer, pipelineFunction)
 }
-lunr.tokenizer.registerFunction(camelCaseTokenizer, 'camelCaseTokenizer')
 var searchModule = function() {
+    var documents = [];
     var idMap = [];
-    function y(e) { 
-        idMap.push(e); 
+    function a(a,b) { 
+        documents.push(a);
+        idMap.push(b); 
     }
+
+    a(
+        {
+            id:0,
+            title:"UpdateApplicationSettings",
+            content:"UpdateApplicationSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/UpdateApplicationSettings',
+            title:"UpdateApplicationSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:1,
+            title:"MageAliases",
+            content:"MageAliases",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/MageAliases',
+            title:"MageAliases",
+            description:""
+        }
+    );
+    a(
+        {
+            id:2,
+            title:"NewDeploymentSettings",
+            content:"NewDeploymentSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/NewDeploymentSettings',
+            title:"NewDeploymentSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:3,
+            title:"BaseNewAndUpdateDeploymentSettings",
+            content:"BaseNewAndUpdateDeploymentSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateDeploymentSettings',
+            title:"BaseNewAndUpdateDeploymentSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:4,
+            title:"BaseNewAndUpdateMageSettings",
+            content:"BaseNewAndUpdateMageSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateMageSettings',
+            title:"BaseNewAndUpdateMageSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:5,
+            title:"SignSettings",
+            content:"SignSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/SignSettings',
+            title:"SignSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:6,
+            title:"Algorithm",
+            content:"Algorithm",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/Algorithm',
+            title:"Algorithm",
+            description:""
+        }
+    );
+    a(
+        {
+            id:7,
+            title:"Processor",
+            content:"Processor",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/Processor',
+            title:"Processor",
+            description:""
+        }
+    );
+    a(
+        {
+            id:8,
+            title:"UpdateDeploymentSettings",
+            content:"UpdateDeploymentSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/UpdateDeploymentSettings',
+            title:"UpdateDeploymentSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:9,
+            title:"BaseNewAndUpdateApplicationSettings",
+            content:"BaseNewAndUpdateApplicationSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateApplicationSettings',
+            title:"BaseNewAndUpdateApplicationSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:10,
+            title:"TrustLevel",
+            content:"TrustLevel",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/TrustLevel',
+            title:"TrustLevel",
+            description:""
+        }
+    );
+    a(
+        {
+            id:11,
+            title:"NewApplicationSettings",
+            content:"NewApplicationSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/NewApplicationSettings',
+            title:"NewApplicationSettings",
+            description:""
+        }
+    );
     var idx = lunr(function() {
-        this.field('title', { boost: 10 });
+        this.field('title');
         this.field('content');
-        this.field('description', { boost: 5 });
-        this.field('tags', { boost: 50 });
+        this.field('description');
+        this.field('tags');
         this.ref('id');
-        this.tokenizer(camelCaseTokenizer);
+        this.use(camelCaseTokenizer);
 
         this.pipeline.remove(lunr.stopWordFilter);
         this.pipeline.remove(lunr.stemmer);
-    });
-    function a(e) { 
-        idx.add(e); 
-    }
-
-    a({
-        id:0,
-        title:"TrustLevel",
-        content:"TrustLevel",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:1,
-        title:"BaseNewAndUpdateMageSettings",
-        content:"BaseNewAndUpdateMageSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:2,
-        title:"BaseNewAndUpdateApplicationSettings",
-        content:"BaseNewAndUpdateApplicationSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:3,
-        title:"NewApplicationSettings",
-        content:"NewApplicationSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:4,
-        title:"NewDeploymentSettings",
-        content:"NewDeploymentSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:5,
-        title:"BaseNewAndUpdateDeploymentSettings",
-        content:"BaseNewAndUpdateDeploymentSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:6,
-        title:"Processor",
-        content:"Processor",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:7,
-        title:"MageAliases",
-        content:"MageAliases",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:8,
-        title:"SignSettings",
-        content:"SignSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:9,
-        title:"UpdateDeploymentSettings",
-        content:"UpdateDeploymentSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:10,
-        title:"UpdateApplicationSettings",
-        content:"UpdateApplicationSettings",
-        description:'',
-        tags:''
-    });
-
-    a({
-        id:11,
-        title:"Algorithm",
-        content:"Algorithm",
-        description:'',
-        tags:''
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/TrustLevel',
-        title:"TrustLevel",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateMageSettings',
-        title:"BaseNewAndUpdateMageSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateApplicationSettings',
-        title:"BaseNewAndUpdateApplicationSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/NewApplicationSettings',
-        title:"NewApplicationSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/NewDeploymentSettings',
-        title:"NewDeploymentSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateDeploymentSettings',
-        title:"BaseNewAndUpdateDeploymentSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/Processor',
-        title:"Processor",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/MageAliases',
-        title:"MageAliases",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/SignSettings',
-        title:"SignSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/UpdateDeploymentSettings',
-        title:"UpdateDeploymentSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/UpdateApplicationSettings',
-        title:"UpdateApplicationSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Mage/Cake.Mage/api/Cake.Mage/Algorithm',
-        title:"Algorithm",
-        description:""
+        documents.forEach(function (doc) { this.add(doc) }, this)
     });
 
     return {
