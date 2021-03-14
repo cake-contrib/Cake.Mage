@@ -39,34 +39,20 @@ var searchModule = function() {
     a(
         {
             id:0,
-            title:"UpdateApplicationSettings",
-            content:"UpdateApplicationSettings",
+            title:"UpdateDeploymentSettings",
+            content:"UpdateDeploymentSettings",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Mage/api/Cake.Mage/UpdateApplicationSettings',
-            title:"UpdateApplicationSettings",
+            url:'/Cake.Mage/api/Cake.Mage/UpdateDeploymentSettings',
+            title:"UpdateDeploymentSettings",
             description:""
         }
     );
     a(
         {
             id:1,
-            title:"MageAliases",
-            content:"MageAliases",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Mage/api/Cake.Mage/MageAliases',
-            title:"MageAliases",
-            description:""
-        }
-    );
-    a(
-        {
-            id:2,
             title:"NewDeploymentSettings",
             content:"NewDeploymentSettings",
             description:'',
@@ -80,21 +66,7 @@ var searchModule = function() {
     );
     a(
         {
-            id:3,
-            title:"BaseNewAndUpdateDeploymentSettings",
-            content:"BaseNewAndUpdateDeploymentSettings",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateDeploymentSettings',
-            title:"BaseNewAndUpdateDeploymentSettings",
-            description:""
-        }
-    );
-    a(
-        {
-            id:4,
+            id:2,
             title:"BaseNewAndUpdateMageSettings",
             content:"BaseNewAndUpdateMageSettings",
             description:'',
@@ -108,35 +80,21 @@ var searchModule = function() {
     );
     a(
         {
-            id:5,
-            title:"SignSettings",
-            content:"SignSettings",
+            id:3,
+            title:"NewApplicationSettings",
+            content:"NewApplicationSettings",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Mage/api/Cake.Mage/SignSettings',
-            title:"SignSettings",
+            url:'/Cake.Mage/api/Cake.Mage/NewApplicationSettings',
+            title:"NewApplicationSettings",
             description:""
         }
     );
     a(
         {
-            id:6,
-            title:"Algorithm",
-            content:"Algorithm",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Mage/api/Cake.Mage/Algorithm',
-            title:"Algorithm",
-            description:""
-        }
-    );
-    a(
-        {
-            id:7,
+            id:4,
             title:"Processor",
             content:"Processor",
             description:'',
@@ -150,15 +108,57 @@ var searchModule = function() {
     );
     a(
         {
-            id:8,
-            title:"UpdateDeploymentSettings",
-            content:"UpdateDeploymentSettings",
+            id:5,
+            title:"Algorithm",
+            content:"Algorithm",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Mage/api/Cake.Mage/UpdateDeploymentSettings',
-            title:"UpdateDeploymentSettings",
+            url:'/Cake.Mage/api/Cake.Mage/Algorithm',
+            title:"Algorithm",
+            description:""
+        }
+    );
+    a(
+        {
+            id:6,
+            title:"MageAliases",
+            content:"MageAliases",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/MageAliases',
+            title:"MageAliases",
+            description:""
+        }
+    );
+    a(
+        {
+            id:7,
+            title:"SignSettings",
+            content:"SignSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/SignSettings',
+            title:"SignSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:8,
+            title:"UpdateApplicationSettings",
+            content:"UpdateApplicationSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/UpdateApplicationSettings',
+            title:"UpdateApplicationSettings",
             description:""
         }
     );
@@ -179,6 +179,20 @@ var searchModule = function() {
     a(
         {
             id:10,
+            title:"BaseNewAndUpdateDeploymentSettings",
+            content:"BaseNewAndUpdateDeploymentSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Mage/api/Cake.Mage/BaseNewAndUpdateDeploymentSettings',
+            title:"BaseNewAndUpdateDeploymentSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:11,
             title:"TrustLevel",
             content:"TrustLevel",
             description:'',
@@ -187,20 +201,6 @@ var searchModule = function() {
         {
             url:'/Cake.Mage/api/Cake.Mage/TrustLevel',
             title:"TrustLevel",
-            description:""
-        }
-    );
-    a(
-        {
-            id:11,
-            title:"NewApplicationSettings",
-            content:"NewApplicationSettings",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Mage/api/Cake.Mage/NewApplicationSettings',
-            title:"NewApplicationSettings",
             description:""
         }
     );
