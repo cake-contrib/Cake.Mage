@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Cake.Core;
+using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Tooling;
 
@@ -19,10 +20,10 @@ namespace Cake.Mage
         private readonly DotNetToolResolver _resolver;
         protected readonly ICakeEnvironment Environment;
 
-        protected MageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, DotNetToolResolver dotNetToolResolver) : base(fileSystem, environment, processRunner, tools)
+        protected MageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, ICakeLog log, DotNetToolResolver dotNetToolResolver) : base(fileSystem, environment, processRunner, tools)
         {
             Environment = environment;
-            _resolver = dotNetToolResolver ?? new DotNetToolResolver(fileSystem, Environment, registry);
+            _resolver = dotNetToolResolver ?? new DotNetToolResolver(fileSystem, Environment, registry, log);
         }
 
         /// <summary>
