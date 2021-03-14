@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\.appveyor.yml = ..\.appveyor.yml
 		..\nuspec\nuget\Cake.Mage.nuspec = ..\nuspec\nuget\Cake.Mage.nuspec
+		..\config.wyam = ..\config.wyam
+		..\GitReleaseManager.yaml = ..\GitReleaseManager.yaml
 		..\README.md = ..\README.md
 		..\recipe.cake = ..\recipe.cake
 	EndProjectSection
