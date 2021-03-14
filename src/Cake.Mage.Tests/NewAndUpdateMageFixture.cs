@@ -8,7 +8,7 @@
 
         protected override void RunTool()
         {
-            var runner = new NewOrUpdateMageTool(FileSystem, Environment, ProcessRunner, Tools, Registry, DotNetToolResolver);
+            var runner = new NewOrUpdateMageTool(FileSystem, Environment, ProcessRunner, Tools, Registry, Log, DotNetToolResolver);
             runner.NewOrUpdate(Settings);
         }
     }

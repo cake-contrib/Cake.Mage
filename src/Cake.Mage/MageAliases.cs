@@ -108,15 +108,15 @@ namespace Cake.Mage
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
 
-            var resolver = new DotNetToolResolver(context.FileSystem, context.Environment, context.Registry);
-            var runner = new SignMageTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools, context.Registry, resolver);
+            var resolver = new DotNetToolResolver(context.FileSystem, context.Environment, context.Registry, context.Log);
+            var runner = new SignMageTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools, context.Registry, context.Log, resolver);
             runner.Sign(settings);
         }
 
         private static void NewOrUpdate(ICakeContext context, BaseNewAndUpdateMageSettings settings)
         {
-            var resolver = new DotNetToolResolver(context.FileSystem, context.Environment, context.Registry);
-            var runner = new NewOrUpdateMageTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools, context.Registry, resolver);
+            var resolver = new DotNetToolResolver(context.FileSystem, context.Environment, context.Registry, context.Log);
+            var runner = new NewOrUpdateMageTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools, context.Registry, context.Log, resolver);
             runner.NewOrUpdate(settings);
         }
     }
