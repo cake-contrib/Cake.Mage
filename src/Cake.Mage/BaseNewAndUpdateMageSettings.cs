@@ -20,27 +20,27 @@ namespace Cake.Mage
         /// manifest or license file.This option requires the -Password option.
         /// </summary>
         /// <value>The cert file.</value>
-        public FilePath CertFile { get; set; }
+        public FilePath? CertFile { get; set; }
 
         /// <summary>
         /// Gets or sets the hash of an X509 certificate in your local cert store.
         /// </summary>
         /// <value>The cert hash.</value>
-        public string CertHash { get; set; }
+        public string? CertHash { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the application whose manifest is being
         /// generated or updated.
         /// </summary>
         /// <value>The name.</value>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Gets or sets the password to use with an X509 certificate when signing
         /// a manifest or license file.
         /// </summary>
         /// <value>The password.</value>
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         /// <summary>
         /// Gets or sets the processor architecture of the application whose manifest
@@ -54,33 +54,33 @@ namespace Cake.Mage
         /// be enclosed in quotes.
         /// </summary>
         /// <value>The publisher.</value>
-        public string Publisher { get; set; }
+        public string? Publisher { get; set; }
 
         /// <summary>
         /// Gets or sets the support URL for the application.
         /// </summary>
         /// <value>The support URL.</value>
-        public Uri SupportUrl { get; set; }
+        public Uri? SupportUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the URI to use for time stamping during signing.
         /// </summary>
         /// <value>The time stamp URI.</value>
-        public Uri TimeStampUri { get; set; }
+        public Uri? TimeStampUri { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the file to save the output of a sign, new, or
         /// update command.
         /// </summary>
         /// <value>To file.</value>
-        public FilePath ToFile { get; set; }
+        public FilePath? ToFile { get; set; }
 
         /// <summary>
         /// Gets or sets the version of the application whose manifest is being
         /// generated or updated.Must be of the form "0.0.0.0".
         /// </summary>
         /// <value>The version.</value>
-        public string Version { get; set; }
+        public string? Version { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the application is a Windows Presentation Foundation Browser Application or not.

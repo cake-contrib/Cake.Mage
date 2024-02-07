@@ -13,14 +13,14 @@ namespace Cake.Mage
         /// an application manifest.
         /// </summary>
         /// <value>From directory.</value>
-        public DirectoryPath FromDirectory { get; set; }
+        public DirectoryPath? FromDirectory { get; set; }
         
         /// <summary>
         /// Gets or sets if the deployment manifest will include the deployment
         /// provider URL.
         /// </summary>
         /// <value>The icon file.</value>
-        public FilePath IconFile { get; set; }
+        public FilePath? IconFile { get; set; }
 
         /// <summary>
         /// Gets or sets the trust level to be included in the application manifest

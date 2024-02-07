@@ -15,7 +15,7 @@ namespace Cake.Mage
         private readonly ICakeEnvironment _environment;
         private readonly IRegistry _registry;
         private readonly ICakeLog _log;
-        private FilePath _toolPath;
+        private FilePath? _toolPath;
 
         public DotNetToolResolver(IFileSystem fileSystem, ICakeEnvironment environment, IRegistry registry, ICakeLog log)
         {
@@ -49,7 +49,7 @@ namespace Cake.Mage
             return _toolPath;
         }
 
-        private FilePath GetFromDisc(string toolExecutable)
+        private FilePath? GetFromDisc(string toolExecutable)
         {
             // Get the path to program files.
             var programFilesX86 = _environment.GetSpecialPath(SpecialPath.ProgramFilesX86);
@@ -100,7 +100,7 @@ namespace Cake.Mage
             return null;
         }
 
-        private FilePath GetFromRegistry(string toolExecutable)
+        private FilePath? GetFromRegistry(string toolExecutable)
         {
             using (var root = _registry.LocalMachine.OpenKey("Software\\Microsoft\\Microsoft SDKs\\Windows"))
             {

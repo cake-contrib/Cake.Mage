@@ -20,7 +20,7 @@ namespace Cake.Mage
         /// <param name="context">The context.</param>
         /// <param name="settings">The settings.</param>
         [CakeMethodAlias]
-        public static void MageNewApplication(this ICakeContext context, NewApplicationSettings settings)
+        public static void MageNewApplication(this ICakeContext context, NewApplicationSettings? settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
 
@@ -43,7 +43,7 @@ namespace Cake.Mage
         /// </code>
         /// </example>
         [CakeMethodAlias]
-        public static void MageNewDeployment(this ICakeContext context, NewDeploymentSettings settings)
+        public static void MageNewDeployment(this ICakeContext context, NewDeploymentSettings? settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
 
@@ -63,7 +63,7 @@ namespace Cake.Mage
         /// });
         /// </code></example>
         [CakeMethodAlias]
-        public static void MageUpdateApplication(this ICakeContext context, UpdateApplicationSettings settings)
+        public static void MageUpdateApplication(this ICakeContext context, UpdateApplicationSettings? settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
 
@@ -83,7 +83,7 @@ namespace Cake.Mage
         /// </example>
         /// </code>
         [CakeMethodAlias]
-        public static void MageUpdateDeployment(this ICakeContext context, UpdateDeploymentSettings settings)
+        public static void MageUpdateDeployment(this ICakeContext context, UpdateDeploymentSettings? settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
 
@@ -104,7 +104,7 @@ namespace Cake.Mage
         /// </code>
         /// </example>
         [CakeMethodAlias]
-        public static void MageSign(this ICakeContext context, SignSettings settings)
+        public static void MageSign(this ICakeContext context, SignSettings? settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
 

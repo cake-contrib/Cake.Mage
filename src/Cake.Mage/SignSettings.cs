@@ -29,13 +29,13 @@ namespace Cake.Mage
         /// Gets or sets the file to sign.
         /// </summary>
         /// <value>The file to sign.</value>
-        public FilePath FileToSign { get; set; }
+        public FilePath? FileToSign { get; set; }
 
         /// <summary>
         /// Gets or sets the location of a digital certificate for signing a manifest
         /// </summary>
         /// <value>The password.</value>
-        public FilePath CertFile { get; set; }
+        public FilePath? CertFile { get; set; }
 
         /// <summary>
         /// <para>
@@ -50,19 +50,19 @@ namespace Cake.Mage
         /// </para>
         /// </summary>
         /// <value>The cert hash.</value>
-        public string CertHash { get; set; }
+        public string? CertHash { get; set; }
 
         /// <summary>
         /// Gets or sets the password that is used for signing a manifest with a digital certificate. Must be 
         /// used in conjunction with the CertFile option.
         /// </summary>
         /// <value>The password.</value>
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         /// <summary>
         /// Gets or sets the output path of the file that has been created or modified.
         /// </summary>
         /// <value>To file.</value>
-        public FilePath ToFile { get; set; }
+        public FilePath? ToFile { get; set; }
     }
 }
