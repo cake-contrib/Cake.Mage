@@ -27,10 +27,13 @@ The Cake.Mage addin adds Mage.exe support to Cake
 
 ## Breaking changes
 
+1.1.0
+- References Cake 4.0.0
+- Supports .net 6+
+
 1.0.0
 
 - References cake 1.0.0
-
 - Add paths for .net 4.8, add logging of tool lookup
 
 0.4
