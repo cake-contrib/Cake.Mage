@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Cake.Core;
 using Cake.Core.Diagnostics;
@@ -13,17 +12,14 @@ namespace Cake.Mage
     /// The Mage tool runner.
     /// </summary>
     /// <typeparam name="TSettings">The type of the tool settings.</typeparam>
-    /// <seealso cref="Cake.Core.Tooling.Tool{TSettings}" />
+    /// <seealso cref="Tool{TSettings}" />
     internal abstract class MageTool<TSettings> : Tool<TSettings> where TSettings : ToolSettings
     {
-        private const string Executable = "mage.exe";
-        private readonly DotNetToolResolver _resolver;
         protected readonly ICakeEnvironment Environment;
 
-        protected MageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, ICakeLog log, DotNetToolResolver dotNetToolResolver) : base(fileSystem, environment, processRunner, tools)
+        protected MageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, IRegistry registry, ICakeLog log) : base(fileSystem, environment, processRunner, tools)
         {
             Environment = environment;
-            _resolver = dotNetToolResolver ?? new DotNetToolResolver(fileSystem, Environment, registry, log);
         }
 
         /// <summary>
@@ -42,19 +38,6 @@ namespace Cake.Mage
         protected override IEnumerable<string> GetToolExecutableNames()
         {
             return new[] { "dotnet", "dotnet.exe" };
-        }
-
-        /// <summary>
-        /// Gets alternative file paths which the tool may exist in
-        /// </summary>
-        /// <param name="settings">The settings.</param>
-        /// <returns>The default tool path.</returns>
-        protected override IEnumerable<FilePath> GetAlternativeToolPaths(TSettings settings)
-        {
-            var path = _resolver.GetPath(Executable);
-            return path != null
-                ? new[] { path }
-                : Enumerable.Empty<FilePath>();
         }
     }
 }

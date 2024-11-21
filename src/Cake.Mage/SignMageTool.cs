@@ -17,13 +17,17 @@ namespace Cake.Mage
         private ProcessArgumentBuilder GetSignArguments(SignSettings settings)
         {
             if (!string.IsNullOrWhiteSpace(settings.Password) && settings.CertFile == null)
+            {
                 throw new ArgumentException("Password requires CertFile to be set", nameof(settings.CertFile));
+            }
 
             if (settings.FileToSign == null)
+            {
                 throw new ArgumentNullException(nameof(settings.FileToSign), "File to sign is required");
+            }
 
             var builder = new ProcessArgumentBuilder();
-            builder.Append("-sign");
+            builder.Append("mage -Sign");
             builder.AppendQuoted(settings.FileToSign.MakeAbsolute(Environment).ToString());
             builder.AppendNonEmptySecretSwitch("-pwd", settings.Password);
             builder.AppendNonNullFilePathSwitch("-certFile", settings.CertFile, Environment);
@@ -34,8 +38,8 @@ namespace Cake.Mage
         }
 
         internal SignMageTool(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner,
-            IToolLocator tools, IRegistry registry, ICakeLog log, DotNetToolResolver dotNetToolResolver)
-            : base(fileSystem, environment, processRunner, tools, registry, log, dotNetToolResolver)
+            IToolLocator tools, IRegistry registry, ICakeLog log)
+            : base(fileSystem, environment, processRunner, tools, registry, log)
         {
         }
     }

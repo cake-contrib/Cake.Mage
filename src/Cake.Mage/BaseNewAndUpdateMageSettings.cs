@@ -13,7 +13,7 @@ namespace Cake.Mage
         /// Gets or sets the algorithm to generate digests.
         /// </summary>
         /// <value>The algorithm.</value>
-        public Algorithm Algorithm { get; set; } = Algorithm.SHA1RSA;
+        public Algorithm Algorithm { get; set; } = Algorithm.SHA256RSA;
 
         /// <summary>
         /// Gets or sets the name of an X509 certificate file with which to sign a

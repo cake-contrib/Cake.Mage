@@ -8,7 +8,7 @@
 
         protected override void RunTool()
         {
-            var runner = new SignMageTool(FileSystem, Environment, ProcessRunner, Tools, Registry, Log, DotNetToolResolver);
+            var runner = new SignMageTool(FileSystem, Environment, ProcessRunner, Tools, Registry, Log);
             runner.Sign(Settings);
         }
     }

@@ -17,11 +17,6 @@ namespace Cake.Mage
         X86,
 
         /// <summary>
-        /// A 64-bit Intel processor only.
-        /// </summary>
-        IA64,
-
-        /// <summary>
         /// A 64-bit AMD processor only.
         /// </summary>
         Amd64
