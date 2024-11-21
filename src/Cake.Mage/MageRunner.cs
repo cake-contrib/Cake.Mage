@@ -41,7 +41,7 @@ namespace Cake.Mage
         /// <returns>The tool executable name.</returns>
         protected override IEnumerable<string> GetToolExecutableNames()
         {
-            return new[] { Executable };
+            return new[] { "dotnet", "dotnet.exe" };
         }
 
         /// <summary>
