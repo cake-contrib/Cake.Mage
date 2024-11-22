@@ -13,7 +13,7 @@ namespace Cake.Mage.Tests
                 Settings = new NewApplicationSettings()
             };
 
-            fixture.Run().Args.ShouldBe("-new Application");
+            fixture.Run().Args.ShouldBe("Mage -New Application");
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace Cake.Mage.Tests
                 Settings = new UpdateApplicationSettings("output.application")
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.application\"");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.application\"");
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Application -fd \"/Working/source\"");
+            fixture.Run().Args.ShouldBe("Mage -New Application -fd \"/Working/source\"");
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Application -t \"/Working/example.application\"");
+            fixture.Run().Args.ShouldBe("Mage -New Application -t \"/Working/example.application\"");
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Application -if \"example.ico\"");
+            fixture.Run().Args.ShouldBe("Mage -New Application -if \"example.ico\"");
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Application -tr FullTrust");
+            fixture.Run().Args.ShouldBe("Mage -New Application -tr FullTrust");
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Application -um True");
+            fixture.Run().Args.ShouldBe("Mage -New Application -um True");
         }
     }
 }

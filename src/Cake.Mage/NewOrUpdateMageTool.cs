@@ -11,13 +11,15 @@ internal class NewOrUpdateMageTool : MageTool<BaseNewAndUpdateMageSettings>
     /// <summary>
     /// Runs a new or update Mage.exe command
     /// </summary>
-    /// <param name="settings">The settings.</param>
+    /// <param name="settings">The settings</param>
     public void NewOrUpdate(BaseNewAndUpdateMageSettings settings) => Run(settings, GetNewOrUpdateArguments(settings));
 
     private ProcessArgumentBuilder GetNewOrUpdateArguments(BaseNewAndUpdateMageSettings settings)
     {
         if (string.IsNullOrWhiteSpace(settings.Password) == false && settings.CertFile == null)
+        {
             throw new ArgumentException("Password requires CertFile to be set", nameof(settings.CertFile));
+        }
 
         var builder = new ProcessArgumentBuilder();
         var newOrUpdateApplicationSettings = settings as BaseNewAndUpdateApplicationSettings;

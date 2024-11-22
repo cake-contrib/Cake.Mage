@@ -16,10 +16,10 @@ internal class LauncherMageTool : MageTool<LauncherSettings>
     {
         if (string.IsNullOrWhiteSpace(settings.EntryPoint) || settings.TargetDirectory is null)
         {
-            ArgumentNullException.ThrowIfNull(nameof(settings));
+            throw new ArgumentException(nameof(settings));
         }
         return new ProcessArgumentBuilder()
-                .Append("mage -AddLauncher")
+                .Append("Mage -AddLauncher")
                 .AppendQuoted(settings.EntryPoint)
                 .AppendNonNullDirectoryPathSwitch("-td", settings.TargetDirectory, Environment);
 

@@ -1,15 +1,14 @@
-﻿namespace Cake.Mage.Tests
-{
-    internal class NewAndUpdateMageFixture : MageFixture<BaseNewAndUpdateMageSettings>
-    {
-        public NewAndUpdateMageFixture() : base("mage.exe")
-        {
-        }
+﻿namespace Cake.Mage.Tests;
 
-        protected override void RunTool()
-        {
-            var runner = new NewOrUpdateMageTool(FileSystem, Environment, ProcessRunner, Tools, Registry, Log);
-            runner.NewOrUpdate(Settings);
-        }
+internal class NewAndUpdateMageFixture : MageFixture<BaseNewAndUpdateMageSettings>
+{
+    public NewAndUpdateMageFixture() : base("dotnet.exe")
+    {
+    }
+
+    protected override void RunTool()
+    {
+        var runner = new NewOrUpdateMageTool(FileSystem, Environment, ProcessRunner, Tools, Registry, Log);
+        runner.NewOrUpdate(Settings);
     }
 }

@@ -11,7 +11,7 @@ namespace Cake.Mage
         /// <summary>
         /// Signs a mage deployment or application.
         /// </summary>
-        /// <param name="settings">The settings.</param>
+        /// <param name="settings">The settings</param>
         public void Sign(SignSettings settings) => Run(settings, GetSignArguments(settings));
 
         private ProcessArgumentBuilder GetSignArguments(SignSettings settings)
@@ -27,7 +27,7 @@ namespace Cake.Mage
             }
 
             var builder = new ProcessArgumentBuilder();
-            builder.Append("mage -Sign");
+            builder.Append("Mage -Sign");
             builder.AppendQuoted(settings.FileToSign.MakeAbsolute(Environment).ToString());
             builder.AppendNonEmptySecretSwitch("-pwd", settings.Password);
             builder.AppendNonNullFilePathSwitch("-certFile", settings.CertFile, Environment);

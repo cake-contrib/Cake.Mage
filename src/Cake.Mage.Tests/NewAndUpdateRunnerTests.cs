@@ -7,7 +7,7 @@ namespace Cake.Mage.Tests
     public class NewAndUpdateRunnerTests
     {
         [Fact]
-        public void Algorithm_should_be_included_if_notSha1Rsa()
+        public void Algorithm_should_not_be_included_if_notSha256Rsa()
         {
             var fixture = new NewAndUpdateMageFixture
             {
@@ -17,7 +17,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -a SHA256RSA");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment");
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -cf \"/Working/example.pfx\" -pwd \"P@ssw0rd\"");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -cf \"/Working/example.pfx\" -pwd \"P@ssw0rd\"");
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -certHash 12345abcdef");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -certHash 12345abcdef");
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -n \"My example app\"");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -n \"My example app\"");
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -p X86");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -p X86");
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -pub \"Example Co.\"");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -pub \"Example Co.\"");
         }
 
         [Fact]
@@ -116,7 +116,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -s \"http://localhost/support\"");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -s \"http://localhost/support\"");
         }
 
         [Fact]
@@ -130,7 +130,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -ti \"http://localhost/timestamp\"");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -ti \"http://localhost/timestamp\"");
         }
 
         [Fact]
@@ -144,7 +144,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -t \"/Working/output.application\"");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -t \"/Working/output.application\"");
         }
 
         [Fact]
@@ -158,7 +158,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -v 1.2.3.4");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -v 1.2.3.4");
         }
 
         [Fact]
@@ -172,7 +172,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -w True");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -w True");
         }
     }
 }

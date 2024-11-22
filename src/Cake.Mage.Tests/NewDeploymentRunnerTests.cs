@@ -1,5 +1,4 @@
-﻿using System;
-using Shouldly;
+﻿using Shouldly;
 using Xunit;
 
 namespace Cake.Mage.Tests
@@ -14,7 +13,7 @@ namespace Cake.Mage.Tests
                 Settings = new NewDeploymentSettings()
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment");
         }
         [Fact]
         public void Install_switch_should_be_omitted_when_false_or_default()
@@ -24,7 +23,7 @@ namespace Cake.Mage.Tests
                 Settings = new NewDeploymentSettings { Install = false }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment");
         }
         [Fact]
         public void Install_switch_should_be_present_when_true()
@@ -34,7 +33,7 @@ namespace Cake.Mage.Tests
                 Settings = new NewDeploymentSettings { Install = true }
             };
 
-            fixture.Run().Args.ShouldBe("-new Deployment -i True");
+            fixture.Run().Args.ShouldBe("Mage -New Deployment -i True");
         }
 
         [Fact]
@@ -45,7 +44,7 @@ namespace Cake.Mage.Tests
                 Settings = new UpdateDeploymentSettings("output.deployment")
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\"");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.deployment\"");
         }
 
         [Fact]
@@ -74,7 +73,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -appc \"appcodebase/v1.0.0.0\"");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.deployment\" -appc \"appcodebase/v1.0.0.0\"");
         }
 
         [Fact]
@@ -88,7 +87,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -appc \"http://localhost/appcodebase\"");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.deployment\" -appc \"http://localhost/appcodebase\"");
         }
 
         [Fact]
@@ -102,7 +101,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -appm \"app.manifest\"");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.deployment\" -appm \"app.manifest\"");
         }
 
         [Fact]
@@ -116,7 +115,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -mv 1.0.0.0");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.deployment\" -mv 1.0.0.0");
         }
 
         [Fact]
@@ -130,7 +129,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -ip False");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.deployment\" -ip False");
         }
 
         [Fact]
@@ -144,7 +143,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-update \"/Working/output.deployment\" -pu \"http://localhost/provider\"");
+            fixture.Run().Args.ShouldBe("Mage -Update \"/Working/output.deployment\" -pu \"http://localhost/provider\"");
         }
     }
 }

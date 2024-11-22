@@ -17,8 +17,8 @@ namespace Cake.Mage
         /// <summary>
         /// Creates a new application manifest.
         /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="context">The context</param>
+        /// <param name="settings">The settings</param>
         [CakeMethodAlias]
         public static void MageNewApplication(this ICakeContext context, NewApplicationSettings? settings)
         {
@@ -30,8 +30,8 @@ namespace Cake.Mage
         /// <summary>
         /// Creates a new deployment manifest.
         /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="context">The context</param>
+        /// <param name="settings">The settings</param>
         /// <example>
         /// <code>
         /// MageNewApplication(new NewApplicationSettings{
@@ -53,8 +53,8 @@ namespace Cake.Mage
         /// <summary>
         /// Makes one or more changes to an application manifest file. 
         /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="context">The context</param>
+        /// <param name="settings">The settings</param>
         /// <example>
         /// <code>
         /// MageUpdateApplication(new UpdateApplicationSettings("./dist/WindowsFormsApplication1.manifest"){
@@ -73,8 +73,8 @@ namespace Cake.Mage
         /// <summary>
         /// Makes one or more changes to a deployment manifest file. 
         /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="context">The context</param>
+        /// <param name="settings">The settings</param>
         /// <code>
         /// <example>
         /// MageUpdateDeployment(new UpdateDeploymentSettings("./dist/WindowsFormsApplication1.application") {
@@ -93,8 +93,8 @@ namespace Cake.Mage
         /// <summary>
         /// Signs an application or deployment.
         /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="context">The context</param>
+        /// <param name="settings">The settings</param>
         /// <example>
         ///   <code>
         /// MageSign(new SignSettings("./dist/WindowsFormsApplication1.application") {
@@ -112,6 +112,11 @@ namespace Cake.Mage
             runner.Sign(settings);
         }
 
+        /// <summary>
+        /// Add launcher.
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="settings">The settings</param>
         [CakeMethodAlias]
         public static void MageAddLauncher(this ICakeContext context, LauncherSettings? settings)
         {

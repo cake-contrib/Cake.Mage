@@ -9,7 +9,7 @@ namespace Cake.Mage.Tests
         [Fact]
         public void File_to_sign_is_required()
         {
-            var fixture = new SignMageFixture("mage.exe")
+            var fixture = new SignMageFixture("dotnet.exe")
             {
                 Settings = new SignSettings()
             };
@@ -20,7 +20,7 @@ namespace Cake.Mage.Tests
         [Fact]
         public void CertFile_must_be_specified_with_password()
         {
-            var fixture = new SignMageFixture("mage.exe")
+            var fixture = new SignMageFixture("dotnet.exe")
             {
                 Settings = new SignSettings("example.application")
                 {
@@ -34,7 +34,7 @@ namespace Cake.Mage.Tests
         [Fact]
         public void Should_call_mage_with_certFile_and_password_if_specified()
         {
-            var fixture = new SignMageFixture("mage.exe")
+            var fixture = new SignMageFixture("dotnet.exe")
             {
                 Settings = new SignSettings("./example.application")
                 {
@@ -43,13 +43,13 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-sign \"/Working/example.application\" -pwd \"P@ssw0rd\" -certFile \"/Working/file.pfx\"");
+            fixture.Run().Args.ShouldBe("Mage -Sign \"/Working/example.application\" -pwd \"P@ssw0rd\" -certFile \"/Working/file.pfx\"");
         }
 
         [Fact]
         public void Should_call_mage_with_certHash_if_specified()
         {
-            var fixture = new SignMageFixture("mage.exe")
+            var fixture = new SignMageFixture("dotnet.exe")
             {
                 Settings = new SignSettings("./example.application")
                 {
@@ -57,13 +57,13 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-sign \"/Working/example.application\" -certHash \"abcdefg\"");
+            fixture.Run().Args.ShouldBe("Mage -Sign \"/Working/example.application\" -certHash \"abcdefg\"");
         }
 
         [Fact]
         public void Should_call_mage_with_certFile_without_a_password()
         {
-            var fixture = new SignMageFixture("mage.exe")
+            var fixture = new SignMageFixture("dotnet.exe")
             {
                 Settings = new SignSettings("./example.application")
                 {
@@ -71,13 +71,13 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-sign \"/Working/example.application\" -certFile \"/Working/file.pfx\"");
+            fixture.Run().Args.ShouldBe("Mage -Sign \"/Working/example.application\" -certFile \"/Working/file.pfx\"");
         }
 
         [Fact]
         public void Shoud_call_mage_with_to_file_if_specified()
         {
-            var fixture = new SignMageFixture("mage.exe")
+            var fixture = new SignMageFixture("dotnet.exe")
             {
                 Settings = new SignSettings("./example.application")
                 {
@@ -85,7 +85,7 @@ namespace Cake.Mage.Tests
                 }
             };
 
-            fixture.Run().Args.ShouldBe("-sign \"/Working/example.application\" -toFile \"/Working/other-example.application\"");
+            fixture.Run().Args.ShouldBe("Mage -Sign \"/Working/example.application\" -toFile \"/Working/other-example.application\"");
         }
     }
 }
