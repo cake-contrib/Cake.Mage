@@ -27,6 +27,12 @@ The Cake.Mage addin adds Mage.exe support to Cake
 
 ## Breaking changes
 
+2.0.0
+- References Cake 5.0.0
+- Supports .NET 8.0 and .NET 9.0
+- Drops support for mage.exe tool that comes with SDK
+- Adds support for dotnet-mage tool - make sure you include [Microsoft.DotNet.Mage](https://www.nuget.org/packages/Microsoft.DotNet.Mage/) nuget package in your script
+
 1.1.0
 - References Cake 4.0.0
 - Supports .net 6+
