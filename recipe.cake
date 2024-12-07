@@ -18,6 +18,12 @@ BuildParameters.SetParameters(
 
 BuildParameters.PrintParameters(Context);
 
+ToolSettings.SetToolPreprocessorDirectives(
+    gitReleaseManagerGlobalTool: "#tool dotnet:?package=GitReleaseManager.Tool&version=0.18.0",
+    nugetTool: "#tool nuget:?package=NuGet.CommandLine&version=6.12.1",
+    gitVersionGlobalTool: "#tool dotnet:?package=GitVersion.Tool&version=5.12.0"
+);
+
 ToolSettings.SetToolSettings(
     context: Context,
     testCoverageFilter: "+[*]* -[nunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]*",
